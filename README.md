@@ -2,7 +2,7 @@
 
 ## Description
 
-A small-scale web app designed to provide real-time weather information. It integrates HTML for structure, CSS for styling, JavaScript for dynamic interactions, and a Weather API for data retrieval. Users can access current conditions and forecasts by specifying a location.
+A small-scale web app designed to provide real-time weather information. It integrates HTML for structure, CSS for styling, JavaScript for dynamic interactions, and a Weather API for data retrieval. Users can access current conditions and forecasts by specifying a location. And also the background video of the webpage changes with respect to the weather condition 
 
 ---
 
