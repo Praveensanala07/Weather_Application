@@ -1,0 +1,129 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Fullscreen background video */
+.back-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Main card container */
+.card {
+    width: 90%;
+    max-width: 400px;
+    background: rgba(187, 52, 52, 0.1);
+    border-radius: 20px;
+    padding: 30px;
+    margin: 100px auto;
+    color: #ba1e1e;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Search bar */
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.search input {
+    flex: 1;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #000000;
+}
+
+.search input::placeholder {
+    color: #000000;
+}
+
+.search button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.search button img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Weather display */
+.weather h1.temp {
+    font-size: 48px;
+    font-weight: 600;
+}
+
+.weather h2.city {
+    font-size: 32px;
+    margin: 10px 0 20px;
+}
+
+/* Weather icon */
+.weather-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 10px;
+    display: block;
+}
+
+/* Details row */
+.details {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.col {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.col img {
+    width: 32px;
+    height: 32px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 500px) {
+    .card {
+        margin: 60px auto;
+        padding: 20px;
+    }
+
+    .weather h1.temp {
+        font-size: 36px;
+    }
+
+    .weather h2.city {
+        font-size: 24px;
+    }
+}
+

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="weathernew.css">
+</head>
+<body>
+<video id="backgroundVideo" autoplay muted loop class="back-video">
+    <source src="default.mp4" type="video/mp4">
+</video>
+<div class="card">
+    <div class="search">
+        <input type="text" placeholder="Enter city name" spellcheck="false">
+        <button><img src="search.png" alt="Search"></button>
+    </div>
+    <div class="weather">
+        <h1 class="temp">22°C</h1>
+        <h2 class="city">Sattenapalle</h2>
+        <div class="details">
+            <div class="col">
+                <img src="humidity.png" alt="Humidity">
+                <div>
+                    <p class="humidity">50%</p>
+                    <p>Humidity</p>
+                </div>
+            </div>
+        </div>
+        <img class="weather-icon" src="cloudy.png" alt="Weather Icon" />
+    </div>
+</div>
+
+<script>
+const apiKey = "d95b82a7c287b15bd65129f01d7c023a";
+const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+
+const searchBox = document.querySelector(".search input");
+const searchBtn = document.querySelector(".search button");
+
+async function checkWeather(city) {
+    try {
+        const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+        if (!response.ok) throw new Error("City not found");
+
+        const data = await response.json();
+
+        // Update weather UI
+        document.querySelector(".city").innerHTML = data.name;
+        document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°C";
+        document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
+
+        // Update background video
+        const weatherMain = data.weather[0].main.toLowerCase();
+        const videoSource = document.getElementById("backgroundVideo").querySelector("source");
+
+        let videoFile = "default.mp4";
+        switch (weatherMain) {
+            case "clear":
+                videoFile = "clear.mp4";
+                break;
+            case "clouds":
+                videoFile = "default.mp4";
+                break;
+            case "rain":
+                videoFile ="rain.mp4"
+            case "drizzle":
+                videoFile = "mist.mp4";
+                break;
+        let image = "cloudy.png";
+            case "clear":
+                Image = "clear.png";
+                break;
+            case "clouds":
+                Image = "clouds.png";
+                break;
+            case "rain":
+                Image = "rain.png";
+                break;
+            case "drizzle":
+                Image = "drizzle.png";
+                break;
+            
+        }
+
+        videoSource.src = videoFile;
+        document.getElementById("backgroundVideo").load();
+    } catch (error) {
+        alert("Error: " + error.message);
+    }
+}
+
+searchBtn.addEventListener("click", () => {
+    checkWeather(searchBox.value);
+});
+searchBox.addEventListener("keyup", (e) => {
+    if (e.key === "Enter") {
+        searchBtn.click();
+    }
+});
+</script>
+
+</body>
+</html>
+
